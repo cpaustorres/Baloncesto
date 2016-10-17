@@ -35,10 +35,10 @@ public class JugadorService {
         Jugador jug4= new Jugador("Elfo","Tografo", LocalDate.of(2010,10,10),400,20,25,alapivot);
         jugadorRepository.save(jug4);
 
-        Jugador jug5= new Jugador("Shaquille","O'neal", LocalDate.of(1993,10,10),500,25,25,base);
+        Jugador jug5= new Jugador("Shaquille","O'neal", LocalDate.of(1993,10,10),50,100,20,base);
         jugadorRepository.save(jug5);
 
-        Jugador jug6= new Jugador("Pepito","Palotes", LocalDate.of(1993,10,10),500,25,25,base);
+        Jugador jug6= new Jugador("Pepito","Palotes", LocalDate.of(1993,10,10),100,50,10,base);
         jugadorRepository.save(jug6);
 
         System.out.println("Jugadores con el nombre Elfo");
@@ -51,20 +51,23 @@ public class JugadorService {
         System.out.println(jugadorRepository.findByasistenciasBetween(10,25));
 
         System.out.println("Jugadores que sean bases");
-//        System.out.println(jugadorRepository.findByposicion("base"));
+      System.out.println(jugadorRepository.findByposicion(base));
 
         System.out.println("Jugadores que hayan nacido antes de una fecha");
         System.out.println(jugadorRepository.findByfechanacimientoBefore(LocalDate.of(1994,1,1)));
 
         jugadorRepository.avgJugadoresperposition().forEach( posicion ->
-                System.out.println("posicion =" + posicion[0] + "media canastas " + posicion[1]));
-
-        System.out.println("J");
+                System.out.println("posicion =" + posicion[0] + "media canastas " + posicion[1] + "media asistencias" + posicion[2] + "media rebotes " + posicion[3]));
 
 
-
-
+        jugadorRepository.avgmaxminJugadoresperposition().forEach( posicion ->
+                System.out.println("posicion =" + posicion[0] + "media canastas " + posicion[1] + "media asistencias" + posicion[2] + "media rebotes " + posicion[3] +
+                        "min canastas " + posicion[4] + "min asistencias " + posicion[5] + "min rebotes " + posicion[6] +
+                        "min canastas " + posicion[7] + "min asistencias " + posicion[8] + "min rebotes " + posicion[9]));
     }
+
+
+}
 
 
 
