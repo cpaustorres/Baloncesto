@@ -27,10 +27,10 @@ public interface JugadorRepository extends JpaRepository<Jugador, Long> {
 
 
     //da error pero no es un error
-    @Query("SELECT jugador.posicion, AVG(jugador.canastas), AVG(jugador.asistencias), AVG(jugador.rebotes),  MIN(jugador.canastas), MIN(jugador.asistencias), MIN(jugador.rebotes)," +
-            " MAX(jugador.canastas), MAX(jugador.asistencias), MAX(jugador.rebotes), " +
-            "FROM Jugador jugador " +
-            "GROUP BY jugador.posicion")
-    List<Object[]> avgmaxminJugadoresperposition();
+   @Query("SELECT jugador.posicion, AVG(jugador.canastas), AVG(jugador.asistencias), AVG(jugador.rebotes),  MIN(jugador.canastas), MIN(jugador.asistencias), MIN(jugador.rebotes)," +
+            " MAX(jugador.canastas), MAX(jugador.asistencias), MAX(jugador.rebotes) " +
+           "FROM Jugador jugador " +
+           "GROUP BY jugador.posicion")
+   List<Object[]> avgmaxminJugadoresperposition();
 
 }
