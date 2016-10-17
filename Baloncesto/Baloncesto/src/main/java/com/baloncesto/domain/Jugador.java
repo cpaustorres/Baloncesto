@@ -15,7 +15,7 @@ public class Jugador {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nombre;
-    private String apellido;
+
     private LocalDate fechanacimiento;
     private Integer canastas;
     private Integer asistencias;
@@ -24,15 +24,16 @@ public class Jugador {
 
     public Jugador() {}
 
-    public Jugador(String nombre, String apellido, LocalDate fechanacimiento, Integer canastas, Integer asistencias, Integer rebotes, String posicion) {
+
+    public Jugador(String nombre, LocalDate fechanacimiento, Integer canastas, Integer asistencias, Integer rebotes, String posicion) {
         this.nombre = nombre;
-        this.apellido = apellido;
         this.fechanacimiento = fechanacimiento;
         this.canastas = canastas;
         this.asistencias = asistencias;
         this.rebotes = rebotes;
         this.posicion = posicion;
     }
+
 
     public Long getId() {
         return id;
@@ -48,14 +49,6 @@ public class Jugador {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
     }
 
     public LocalDate getFechanacimiento() {
@@ -105,9 +98,8 @@ public class Jugador {
 
         Jugador jugador = (Jugador) o;
 
-        if (!id.equals(jugador.id)) return false;
+        if (id != jugador.id) return false;
         if (!nombre.equals(jugador.nombre)) return false;
-        if (!apellido.equals(jugador.apellido)) return false;
         if (!fechanacimiento.equals(jugador.fechanacimiento)) return false;
         if (!canastas.equals(jugador.canastas)) return false;
         if (!asistencias.equals(jugador.asistencias)) return false;
@@ -118,9 +110,8 @@ public class Jugador {
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + nombre.hashCode();
-        result = 31 * result + apellido.hashCode();
         result = 31 * result + fechanacimiento.hashCode();
         result = 31 * result + canastas.hashCode();
         result = 31 * result + asistencias.hashCode();
@@ -134,8 +125,7 @@ public class Jugador {
         return "Jugador{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", fechanacimiento=" + fechanacimiento +
+                ", fechanacimiento='" + fechanacimiento + '\'' +
                 ", canastas=" + canastas +
                 ", asistencias=" + asistencias +
                 ", rebotes=" + rebotes +

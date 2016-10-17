@@ -4,6 +4,7 @@ package com.baloncesto;
 import com.baloncesto.service.JugadorService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class BaloncestoApplication {
@@ -13,9 +14,7 @@ public class BaloncestoApplication {
 
 		JugadorService jugadorService=context.getBean(JugadorService.class);
 
-
-		JugadorService.testJugadores();
-
+		jugadorService.testJugadores();
 
 	}
 }
