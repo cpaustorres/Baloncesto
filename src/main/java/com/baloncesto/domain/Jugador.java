@@ -22,6 +22,12 @@ public class Jugador {
     private Integer rebotes;
     private Posicion posicion;
 
+
+
+    @ManyToOne
+    private Equipo equipo;
+
+
     public Jugador(String nombre, String apellido, LocalDate fechanacimiento, Integer canastas, Integer asistencias, Integer rebotes, Posicion posicion) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -33,6 +39,14 @@ public class Jugador {
     }
 
     public Jugador() {}
+
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    }
 
     public Long getId() {
         return id;

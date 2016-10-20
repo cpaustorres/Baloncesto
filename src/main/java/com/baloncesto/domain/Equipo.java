@@ -8,9 +8,7 @@ import java.time.LocalDate;
 /**
  * Created by usu26 on 17/10/2016.
  */
-//identificador, nombre, localidad y fecha de
-//
-//        creación
+
 
 public class Equipo {
 
@@ -21,10 +19,12 @@ public class Equipo {
     private String localidad;
     private LocalDate fechacreacion;
 
+
     public Equipo(String nombre, String localidad, LocalDate fechacreacion) {
         this.nombre = nombre;
         this.localidad = localidad;
         this.fechacreacion = fechacreacion;
+
     }
     public Equipo(){}
 

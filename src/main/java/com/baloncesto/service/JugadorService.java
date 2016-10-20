@@ -1,6 +1,8 @@
 package com.baloncesto.service;
 
+import com.baloncesto.domain.Equipo;
 import com.baloncesto.domain.Jugador;
+import com.baloncesto.repository.EquipoRepository;
 import com.baloncesto.repository.JugadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
@@ -20,26 +22,154 @@ public class JugadorService {
     @Autowired
       private JugadorRepository jugadorRepository;
 
+    @Autowired
+    private EquipoRepository equiporepository;
+
     public void testJugadores() {
+        //Creamos el PRIMER EQUIPO
+        Equipo equipo1 = new Equipo("FcBarcelona","Barcelona",LocalDate.of(1899,10,10));
 
+        //Guardamos el equipo
+        equiporepository.save(equipo1);
 
-        Jugador jug1 = new Jugador("Master", "Carl", LocalDate.of(2010, 10, 10), 100, 5, 25, escolta);
+        //Creamos los 5 jugadores
+        Jugador jug1 = new Jugador("JuanCarlos", "Navarro", LocalDate.of(1980, 10, 10), 100, 5, 25, escolta);
+        Jugador jug2 = new Jugador("Victor", "Claver", LocalDate.of(1981, 10, 10), 200, 10, 25, alero);
+        Jugador jug3 = new Jugador("Shane", "Lawal", LocalDate.of(1982, 10, 10), 300, 15, 25, pivot);
+        Jugador jug4 = new Jugador("Aleksandar", "Vezenkov", LocalDate.of(1983, 10, 10), 400, 20, 25, alapivot);
+        Jugador jug5 = new Jugador("Tyrese", "Rice", LocalDate.of(1984, 10, 10), 50, 100, 20, base);
+        Jugador jug6 = new Jugador("Juan", "Palomez", LocalDate.of(1986, 10, 10), 100, 5, 25, escolta);
+        //Añadimos los equipos a cada jugador
+        jug1.setEquipo(equipo1);
+        jug2.setEquipo(equipo1);
+        jug3.setEquipo(equipo1);
+        jug4.setEquipo(equipo1);
+        jug5.setEquipo(equipo1);
+        jug6.setEquipo(equipo1);
+        //Guardamos los jugadores
         jugadorRepository.save(jug1);
-
-        Jugador jug2 = new Jugador("Vin", "Diesel", LocalDate.of(2010, 10, 10), 200, 10, 25, alero);
         jugadorRepository.save(jug2);
-
-        Jugador jug3 = new Jugador("Pau", "Gasol", LocalDate.of(2010, 10, 10), 300, 15, 25, pivot);
         jugadorRepository.save(jug3);
-
-        Jugador jug4 = new Jugador("Elfo", "Tografo", LocalDate.of(2010, 10, 10), 400, 20, 25, alapivot);
         jugadorRepository.save(jug4);
-
-        Jugador jug5 = new Jugador("Shaquille", "O'neal", LocalDate.of(1993, 10, 10), 50, 100, 20, base);
         jugadorRepository.save(jug5);
-
-        Jugador jug6 = new Jugador("Pepito", "Palotes", LocalDate.of(1993, 10, 10), 100, 50, 10, base);
         jugadorRepository.save(jug6);
+
+
+
+        //Creamos el SEGUNDO EQUIPO
+
+        Equipo equipo2 = new Equipo("RandomTeam","Londres",LocalDate.of(2001,10,10));
+
+        //Guardamos el equipo
+        equiporepository.save(equipo2);
+
+        //Creamos los 5 jugadores
+        Jugador jug7 = new Jugador("Juan", "Palomo", LocalDate.of(1986, 10, 10), 100, 5, 25, escolta);
+        Jugador jug8 = new Jugador("Vin", "Diesel", LocalDate.of(1987, 10, 10), 200, 10, 25, alero);
+        Jugador jug9 = new Jugador("Pau", "Gasol", LocalDate.of(1988, 10, 10), 300, 15, 25, pivot);
+        Jugador jug10 = new Jugador("Elfo", "Tografo", LocalDate.of(1989, 10, 10), 400, 20, 25, alapivot);
+        Jugador jug11 = new Jugador("Shaquille", "O'neal", LocalDate.of(1990, 10, 10), 50, 100, 20, base);
+
+        //Añadimos los equipos a cada jugador
+        jug7.setEquipo(equipo2);
+        jug8.setEquipo(equipo2);
+        jug9.setEquipo(equipo2);
+        jug10.setEquipo(equipo2);
+        jug11.setEquipo(equipo2);
+
+        //Guardamos los jugadores
+        jugadorRepository.save(jug7);
+        jugadorRepository.save(jug8);
+        jugadorRepository.save(jug9);
+        jugadorRepository.save(jug10);
+        jugadorRepository.save(jug11);
+
+
+
+        //Creamos el TERCER EQUIPO
+
+        Equipo equipo3 = new Equipo("Stucom","Barcelona",LocalDate.of(2015,10,10));
+
+        //Guardamos el equipo
+        equiporepository.save(equipo3);
+
+        //Creamos los 5 jugadores
+        Jugador jug12 = new Jugador("Carlos", "Paús", LocalDate.of(1985, 10, 10), 100, 5, 25, escolta);
+        Jugador jug13 = new Jugador("Pau", "Garcia", LocalDate.of(1993, 10, 10), 200, 10, 25, alero);
+        Jugador jug14 = new Jugador("Joan", "Bosch", LocalDate.of(1991, 10, 10), 300, 15, 25, pivot);
+        Jugador jug15 = new Jugador("Sergi", "Mateu", LocalDate.of(1989, 10, 10), 400, 20, 25, alapivot);
+        Jugador jug16 = new Jugador("Sergi", "Cortes", LocalDate.of(2000, 10, 10), 50, 100, 20, base);
+
+        //Añadimos los equipos a cada jugador
+        jug12.setEquipo(equipo3);
+        jug13.setEquipo(equipo3);
+        jug14.setEquipo(equipo3);
+        jug15.setEquipo(equipo3);
+        jug16.setEquipo(equipo3);
+
+        //Guardamos los jugadores
+        jugadorRepository.save(jug12);
+        jugadorRepository.save(jug13);
+        jugadorRepository.save(jug14);
+        jugadorRepository.save(jug15);
+        jugadorRepository.save(jug16);
+
+
+        //Creamos el CUARTO EQUIPO
+
+        Equipo equipo4 = new Equipo("TheWalkingDead","Barcelona",LocalDate.of(2008,10,10));
+
+        //Guardamos el equipo
+        equiporepository.save(equipo4);
+
+        //Creamos los 5 jugadores
+        Jugador jug17 = new Jugador("Master", "Carl", LocalDate.of(1985, 10, 10), 100, 5, 25, escolta);
+        Jugador jug18 = new Jugador("Michone", "Handemore", LocalDate.of(1993, 10, 10), 200, 10, 25, alero);
+        Jugador jug19 = new Jugador("Ric", "Johnson", LocalDate.of(1991, 10, 10), 300, 15, 25, pivot);
+        Jugador jug20 = new Jugador("Daryl", "Thompson", LocalDate.of(1989, 10, 10), 400, 20, 25, alapivot);
+        Jugador jug21 = new Jugador("Zombie", "Muñón", LocalDate.of(2000, 10, 10), 50, 100, 20, base);
+
+        //Añadimos los equipos a cada jugador
+        jug17.setEquipo(equipo4);
+        jug18.setEquipo(equipo4);
+        jug19.setEquipo(equipo4);
+        jug20.setEquipo(equipo4);
+        jug21.setEquipo(equipo4);
+
+        //Guardamos los jugadores
+        jugadorRepository.save(jug17);
+        jugadorRepository.save(jug18);
+        jugadorRepository.save(jug19);
+        jugadorRepository.save(jug20);
+        jugadorRepository.save(jug21);
+
+        //Creamos el QUINTO EQUIPO
+
+        Equipo equipo5 = new Equipo("Chiringuito","Madrid",LocalDate.of(2008,10,10));
+
+        //Guardamos el equipo
+        equiporepository.save(equipo5);
+
+        //Creamos los 5 jugadores
+        Jugador jug22 = new Jugador("Xusep", "Pedrerol", LocalDate.of(1985, 10, 10), 100, 5, 25, escolta);
+        Jugador jug23 = new Jugador("Lobo", "Carrasco", LocalDate.of(1993, 10, 10), 200, 10, 25, alero);
+        Jugador jug24 = new Jugador("Cristobal", "Soria", LocalDate.of(1991, 10, 10), 300, 15, 25, pivot);
+        Jugador jug25 = new Jugador("Quim", "Domenech", LocalDate.of(1989, 10, 10), 400, 20, 25, alapivot);
+        Jugador jug26 = new Jugador("Alvaro", "Benito", LocalDate.of(2000, 10, 10), 50, 100, 20, base);
+
+        //Añadimos los equipos a cada jugador
+        jug22.setEquipo(equipo5);
+        jug23.setEquipo(equipo5);
+        jug24.setEquipo(equipo5);
+        jug25.setEquipo(equipo5);
+        jug26.setEquipo(equipo5);
+
+        //Guardamos los jugadores
+        jugadorRepository.save(jug22);
+        jugadorRepository.save(jug23);
+        jugadorRepository.save(jug24);
+        jugadorRepository.save(jug25);
+        jugadorRepository.save(jug26);
 
         System.out.println("Jugadores con el nombre Elfo");
         System.out.println(jugadorRepository.findBynombre("Elfo"));
