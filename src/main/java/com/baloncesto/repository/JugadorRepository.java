@@ -19,6 +19,9 @@ public interface JugadorRepository extends JpaRepository<Jugador, Long> {
     List<Jugador> findByposicion(Posicion posicion);
     List<Jugador> findByfechanacimientoBefore(LocalDate fechanacimiento);
 
+    List<Jugador> findByEquipoNombre(String nombre);
+    List<Jugador> findByEquipoNombreAndPosicion(String nombre,Posicion posicion);
+
     //da error pero no es un error
     @Query("SELECT jugador.posicion, AVG(jugador.canastas), AVG(jugador.asistencias), AVG(jugador.rebotes) " +
             "FROM Jugador jugador " +
