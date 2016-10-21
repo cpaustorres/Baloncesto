@@ -1,5 +1,6 @@
 package com.baloncesto.domain;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,7 +10,7 @@ import java.time.LocalDate;
  * Created by usu26 on 17/10/2016.
  */
 
-
+@Entity
 public class Equipo {
 
     @Id

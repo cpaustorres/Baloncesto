@@ -193,6 +193,9 @@ public class JugadorService {
       jugadorRepository.avgmaxminJugadoresperposition().forEach( posicion ->
                System.out.println("posicion =" + posicion[0] + "media canastas " + posicion[1] + "media asistencias" + posicion[2] + "media rebotes " + posicion[3] + "min canastas " + posicion[4] + "min asistencias " + posicion[5] + "min rebotes " + posicion[6] + "min canastas " + posicion[7] + "min asistencias " + posicion[8] + "min rebotes " + posicion[9]));
 
+
+        System.out.println(equiporepository.findBylocalidad("Madrid"));
+
     }
 
 }
