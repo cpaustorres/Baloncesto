@@ -198,8 +198,8 @@ public class JugadorService {
 
         System.out.println(jugadorRepository.findByEquipoNombre("Chiringuito"));
 
-
         System.out.println(jugadorRepository.findByEquipoNombreAndPosicion("Chiringuito",alero));
+
 
     }
 
