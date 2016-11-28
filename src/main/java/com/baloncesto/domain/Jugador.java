@@ -21,9 +21,6 @@ public class Jugador {
     private Integer asistencias;
     private Integer rebotes;
     private Posicion posicion;
-
-
-
     @ManyToOne
     private Equipo equipo;
 

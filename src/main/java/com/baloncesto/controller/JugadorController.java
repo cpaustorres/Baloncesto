@@ -40,12 +40,15 @@ public class JugadorController {
         return jugador;
     }
 
+
+    /*JUGADOR 1- */
     @GetMapping("/ByOrderByCanastas/")
     public List<Jugador> findByOrderByCanastasDesc() {
         return jugadorRepository.findByOrderByCanastasDesc();
     }
 
 
+    /**/
     @GetMapping("/byCanastas/{canastas}")
     public List<Jugador> findByCanastasGreaterThan(@PathVariable Integer canastas) {
         return jugadorRepository.findByCanastasGreaterThan(canastas);
