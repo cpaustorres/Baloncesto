@@ -1,15 +1,19 @@
 package com.baloncesto.controller;
 
+import com.baloncesto.controller.util.HeaderUtil;
 import com.baloncesto.domain.Jugador;
 import com.baloncesto.domain.Posicion;
 import com.baloncesto.repository.JugadorRepository;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
+import java.net.URISyntaxException;
+import java.net.URI;
 import java.util.*;
 
 /**
@@ -24,9 +28,22 @@ public class JugadorController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public Jugador createPlayer(@RequestBody Jugador jugador) {
-        return jugadorRepository.save(jugador);
+
+       public ResponseEntity<Jugador> createPlayer(@RequestBody Jugador player) throws URISyntaxException {
+              if (player.getId() != null) {
+                       return ResponseEntity.
+                                       badRequest().
+                                       headers(
+                                              HeaderUtil.
+                                                              createFailureAlert("player", "idexists", "A new player cannot already have an ID")).body(null);
+                   }
+        Jugador result = jugadorRepository.save(player);
+              return ResponseEntity.created(new URI("/players/" + result.getId()))
+                               .headers(HeaderUtil.createEntityCreationAlert("player", result.getId().toString()))
+                               .body(result);
     }
+
+
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Jugador> findAll() {
@@ -93,5 +110,29 @@ public class JugadorController {
         }
         return playerMultiMap.asMap();
     }
+
+
+    // T0D0 Gestión de errores cuando el parametro de ordenación es invalido.
+    @GetMapping
+    public List<Jugador> findAllOrderBy(
+            @RequestParam(
+                    name = "orderBy", required = false) String orderBy,
+            @RequestParam(
+                    name = "direction",defaultValue = "ASC") String direction
+    ){
+        if(orderBy != null) {
+            Sort sort;
+            if (direction.equals("ASC")){
+                sort = new Sort(Sort.Direction.ASC, orderBy);
+            }
+            else{
+                sort = new Sort(Sort.Direction.DESC, orderBy);
+            }
+            return jugadorRepository.findAll(sort);
+        }
+        return jugadorRepository.findAll();
+    }
+
+
 
 }
